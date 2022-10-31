@@ -20,7 +20,8 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'username',
+        'password'
     ];
 
     /**
@@ -41,4 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The attributes that should be encripted yusing ORM Elocuent Mutator
+     * ( set - field - property)
+     *
+     * @pass array<int, string>
+     */
+    public function setPasswordAttribute(String $pass = null)
+    {
+        $this->attributes['password'] = bcrypt($pass);
+    }
 }

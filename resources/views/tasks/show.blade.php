@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layotus.app-master')
 
 @section('content')
 
@@ -6,13 +6,7 @@
         <form action="{{ route('tasks.update', ['task' => $task->id]) }}"  method="POST">
             @method('PATCH')
             @csrf
-            @if (session('success'))
-                <h6 class="alert alert-success">{{ session('success')}}</h6>  
-            @endif
-
-            @error('title')
-                <h6 class="alert alert-danger">{{ $message }}</h6>  
-            @enderror
+            @include('layotus.partials.messages')
 
             <div class="mb-3 row">
                     <div class="col">
@@ -38,7 +32,7 @@
             
             <div class="mb-3 row">
                 <div class="offset-sm-2 col-sm-4">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                    <button type="submit" class="btn btn-success">Actualizar</button>
                 </div>
                 </form>
                 <div class="offset-sm-2 col-sm-4">

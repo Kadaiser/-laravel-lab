@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layotus.app-master')
 
 @section('content')
 
@@ -6,13 +6,7 @@
         <div class="row justify-content-center align-items-center g-2">
             <form action="{{ route('tasks.store') }}"  method="POST">
                 @csrf
-                @if (session('success'))
-                    <h6 class="alert alert-success">{{ session('success')}}</h6>  
-                @endif
-
-                @error('title')
-                    <h6 class="alert alert-danger">{{ $message }}</h6>  
-                @enderror
+                @include('layotus.partials.messages')
                 <div class="mb-3 row">
                     <div class="col">
                         <label for="title" class="col-4 col-form-label">Tarea</label>
@@ -36,7 +30,7 @@
                 
                 <div class="mb-3 row">
                     <div class="col d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-success">Crear</button>
                     </div>
                 </div>
             </form>
@@ -44,8 +38,11 @@
 
             @foreach($tareas as $tarea)
             <div class="row justify-content-center align-items-center g-2">
-                <div class="col-md-9 d-flex align-items-center">
+                <div class="col-md-7 d-flex align-items-center">
                     <a href="{{ route('tasks.show', ['task' => $tarea->id])}}" class="">{{$tarea->title}}</a>
+                </div>
+                <div class="col-md-2 d-flex align-items-center">
+                    <span class='color-container p-2' style='background-color: {{$categories[0]->color}}'> </span>
                 </div>
                 <div class="col-md-3 d-flex justify-content-end">
                     <form action="{{ route('tasks.destroy',['task' => $tarea->id]) }}" method="POST">

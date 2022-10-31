@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 //Tareas
-use App\Http\Controllers\TareasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TasksController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,16 +20,20 @@ use App\Http\Controllers\TasksController;
 |
 */
 
-Route::get('/home', function () { return view('app'); })->name('home');
 
-Route::get('/login', function () { return view('app');})->name('login');
+Route::get('/', function () { return view('welcome'); });
 
-//Route::get('/tareas', [TareasController::class, 'index'])->name('tasks');
-//Route::get('/tareas/{id}', [TareasController::class, 'get'])->name('task');
-//Route::post('/tareas', [TareasController::class, 'store'])->name('createTask');
-//Route::patch('/tareas/{id}', [TareasController::class, 'update'])->name('uptadeTask');
-//Route::delete('/tareas/{id}', [TareasController::class, 'delete'])->name('deleteTask');
 
+Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/logout', [LogoutController::class, 'logout']);
+
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::resource('tasks', TasksController::class);
 Route::resource('categories', CategoriesController::class);

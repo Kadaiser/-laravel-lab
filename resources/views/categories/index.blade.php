@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layotus.app-master')
 
 @section('content')
 
@@ -6,13 +6,7 @@
         <div class="row justify-content-center align-items-center g-2">
             <form action="{{ route('categories.store') }}"  method="POST">
                 @csrf
-                @if (session('success'))
-                    <h6 class="alert alert-success">{{ session('success')}}</h6>  
-                @endif
-
-                @error('name')
-                    <h6 class="alert alert-danger">{{ $message }}</h6>  
-                @enderror
+                @include('layotus.partials.messages')
                 <div class="mb-3 row">
                     <label for="title" class="col-4 col-form-label">Categoria</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Name">
@@ -25,7 +19,7 @@
                 
                 <div class="mb-3 row">
                     <div class="col d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Crear</button>
+                        <button type="submit" class="btn btn-success">Crear</button>
                     </div>
                 </div>
             </form>

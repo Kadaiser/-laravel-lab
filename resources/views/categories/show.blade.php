@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layotus.app-master')
 
 @section('content')
 
@@ -7,6 +7,7 @@
             <form action="{{ route('categories.update',['category' => $category->id]) }}"  method="POST">
                 @method('PATCH')
                 @csrf
+                @include('layotus.partials.messages')
                 <div class="mb-3 row">
                     <label for="title" class="col-4 col-form-label">Categoria</label>
                     <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{$category->name}}">
@@ -19,7 +20,7 @@
                 
                 <div class="mb-3 row">
                     <div class="col d-flex justify-content-end">
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
                     </div>
                 </div>
             </form>
