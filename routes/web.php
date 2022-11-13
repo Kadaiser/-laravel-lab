@@ -9,6 +9,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BuildingManagementController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +38,9 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::resource('tasks', TasksController::class);
-Route::resource('categories', CategoriesController::class);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+//Route::resource('tasks', TasksController::class);
+//Route::resource('categories', CategoriesController::class);
+Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom']);
+Route::resource('buildings', BuildingManagementController::class);

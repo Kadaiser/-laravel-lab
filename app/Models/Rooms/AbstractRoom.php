@@ -1,16 +1,43 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Rooms;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use App\Interfaces\RoomInterface;
 
-class User extends Authenticatable
+abstract class AbstractRoom extends Model implements RoomInterface
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+
+    protected $table = 'rooms';
+
+    protected $Height;
+    protected $Width;
+    protected $Length;
+    protected $Volume;
+
+    public function getType(){
+        return (new \ReflectionClass(get_called_class()))->getShortName();
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+    public function getWidth()
+    {
+        return $this->width;
+    }
+    public function getLength()
+    {
+        return $this->length;
+    }
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
 
     /**
      * The attributes that are mass assignable.
@@ -18,49 +45,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'username',
-        'password',
+        'type',
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * The attributes that should be encripted using ORM Elocuent Mutator
-     * ( set - field - property)
-     *
-     * @pass array<int, string>
-     */
-    public function setPasswordAttribute(String $pass = null)
-    {
-        $this->attributes['password'] = bcrypt($pass);
-    }
-
-    public function getRole()
-    {
-        return 'User';
-    }
-
-
-    protected $table = 'users';
 
     /**
      * Create a new instance of the given model.
@@ -75,13 +61,13 @@ class User extends Authenticatable
     public function newInstance($attributes = [], $exists = false)
     {
 
-        //dd($attributes);
+        //\dd($attributes);
         // This method just provides a convenient way for us to generate fresh model
         // instances of this current model. It is particularly useful during the
         // hydration of new objects via the Eloquent query builder instances.
-        $model = ( isset($attributes['type']) ) ? 
-            new $attributes['type']($attributes) :
-            new static($attributes);
+        $model = (!isset($attributes['type']) || is_null($attributes['type'])) ? 
+            new static($attributes) :
+            new $attributes['type']($attributes);
 
         $model->exists = $exists;
 
@@ -110,7 +96,6 @@ class User extends Authenticatable
      */
     public function newFromBuilder($attributes = [], $connection = null)
     {
-        //dd($attributes);
         $attributes = (array) $attributes;
         $model = $this->newInstance(attributes: [
             'type' => $attributes['type'] ?? null
@@ -125,5 +110,4 @@ class User extends Authenticatable
 
         return $model;
     }
-
 }

@@ -1,16 +1,23 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Buildings;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use App\Interfaces\BuildingInterface;
+use App\Models\Rooms\GenericRoom;
 
-class User extends Authenticatable
+
+abstract class AbstractBuilding extends Model implements BuildingInterface
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+    
+
+    protected $table = 'buildings';
+
+    protected $numFloors = 1;
+    protected $floors = array();
+
 
     /**
      * The attributes that are mass assignable.
@@ -18,49 +25,42 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'username',
-        'password',
+        'type',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * The attributes that should be encripted using ORM Elocuent Mutator
-     * ( set - field - property)
-     *
-     * @pass array<int, string>
-     */
-    public function setPasswordAttribute(String $pass = null)
+    public function Rooms()
     {
-        $this->attributes['password'] = bcrypt($pass);
+        return $this->hasMany(GenericRoom::class, 'building_id');
     }
 
-    public function getRole()
+    public function setRooms()
     {
-        return 'User';
+        foreach ($this->rooms as $room) {
+            $this->floors[$room->floor][] = $room;
+        }
+        $this->numFloors = count($this->floors);
+    }
+    
+
+    public function getType(){
+        return (new \ReflectionClass(get_called_class()))->getShortName();
     }
 
 
-    protected $table = 'users';
+    public function getNumFloors()
+    {
+        return $this->numFloors;
+    }
+
+    public function getFloors()
+    {
+        return $this->floors;
+    }
+
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
 
     /**
      * Create a new instance of the given model.
@@ -75,13 +75,13 @@ class User extends Authenticatable
     public function newInstance($attributes = [], $exists = false)
     {
 
-        //dd($attributes);
+        //\dd($attributes);
         // This method just provides a convenient way for us to generate fresh model
         // instances of this current model. It is particularly useful during the
         // hydration of new objects via the Eloquent query builder instances.
-        $model = ( isset($attributes['type']) ) ? 
-            new $attributes['type']($attributes) :
-            new static($attributes);
+        $model = (!isset($attributes['type']) || is_null($attributes['type'])) ? 
+            new static($attributes) :
+            new $attributes['type']($attributes);
 
         $model->exists = $exists;
 
@@ -110,7 +110,6 @@ class User extends Authenticatable
      */
     public function newFromBuilder($attributes = [], $connection = null)
     {
-        //dd($attributes);
         $attributes = (array) $attributes;
         $model = $this->newInstance(attributes: [
             'type' => $attributes['type'] ?? null

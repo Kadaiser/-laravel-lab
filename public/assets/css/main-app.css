@@ -1,0 +1,65 @@
+
+html{
+    background-color: #111;
+}
+body, .container-transparent{
+    background-color: transparent !important;
+    padding: 0;
+    font-family: sans-serif;
+    color: green;
+}
+a{
+    text-decoration: none;
+    color: lightgreen;
+}
+a:hover{
+    color: green;
+}
+
+p, h1, h2, h3, h4, h5, h6{
+    color: green;
+}
+.container, .container-fluid {
+    background-color: #222;
+}
+.navbar {
+    background-color: #222 !important;
+}
+.nav-link {
+    color: green !important;
+}
+
+.nav-link:hover {
+    color: lightgreen ;
+}
+
+.navbar-brand,
+.dropdown-toggle{
+    color: darkgreen !important;
+}
+.navbar-card-brand{
+    color: green !important;
+}
+
+.form-control{
+    background-color: #424242;
+    color: lightgreen;
+    border-color: lightgreen;
+}
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: darkgreen;
+    opacity: .7; /* Firefox */
+}
+input::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: darkgreen;
+}
+label{
+    color: darkgreen ;
+}
+
+.room-container{
+    background-repeat: no-repeat;
+    background-size: 22vw;
+    background-position: 20vw -2.5vw;
+    min-height: 200px;
+}
