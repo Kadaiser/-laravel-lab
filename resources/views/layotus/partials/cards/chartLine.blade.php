@@ -2,7 +2,7 @@
 <script type="text/javascript" src="{{url('assets/js/card.js')}}"></script>
 
 <div class="container container-card mt-4 p-2 w-50 border">
-    
+    <?php $titleCard = "Temp/Hum"; ?>
     @include('layotus.partials.cards.component.dropdownCornerMenu')
 
     <div class="row justify-content-center">

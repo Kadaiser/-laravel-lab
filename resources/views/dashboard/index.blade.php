@@ -7,5 +7,6 @@
 @include('layotus.partials.cards.addCard')
 @include('layotus.partials.cards.chartLine')
 @include('layotus.partials.cards.simpleLed')
+@include('layotus.partials.cards.rgbLed')
 
 @endsection
