@@ -11,6 +11,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BuildingManagementController;
+use App\Http\Controllers\RoomManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 //Route::resource('categories', CategoriesController::class);
 Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom']);
 Route::resource('buildings', BuildingManagementController::class);
+
+Route::get('/rooms/{room}', [RoomManagementController::class, 'show']);
