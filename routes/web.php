@@ -12,6 +12,8 @@ use App\Http\Controllers\TasksController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BuildingManagementController;
 use App\Http\Controllers\RoomManagementController;
+use App\Http\Controllers\ChirpController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,22 +28,37 @@ use App\Http\Controllers\RoomManagementController;
 
 
 Route::get('/', function () { return redirect('home'); });
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])
+    ->middleware('guest');
+
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/logout', [LogoutController::class, 'logout']);
 
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])
+    ->middleware('guest');
+
 Route::post('/register', [RegisterController::class, 'register']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/logout', [LogoutController::class, 'logout'])
+    ->middleware('auth');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware('auth');
 
 //Route::resource('tasks', TasksController::class);
 //Route::resource('categories', CategoriesController::class);
-Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom']);
-Route::resource('buildings', BuildingManagementController::class);
+Route::resource('chirps', ChirpController::class)
+    ->only(['index', 'store'])
+    ->middleware('auth');
 
-Route::get('/rooms/{room}', [RoomManagementController::class, 'show']);
+Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom'])
+    ->middleware('auth');
+
+Route::resource('buildings', BuildingManagementController::class)
+    ->middleware('auth');
+    
+Route::get('/rooms/{room}', [RoomManagementController::class, 'show'])
+    ->middleware('auth');

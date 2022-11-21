@@ -3,7 +3,9 @@
 namespace App\Models;
 
 /**
- * 
+ * Used for transversal instance of clases sahring the same table (Ex: buildings, rooms, etc...)
+ * For this to work, the table must have a type column, the type column must be a string with the name of the class
+ * this is not polymorphic, it is a simple way to have a single table for multiple classes
  */
 trait Child
 {

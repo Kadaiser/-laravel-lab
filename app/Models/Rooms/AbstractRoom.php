@@ -17,6 +17,11 @@ abstract class AbstractRoom extends Model implements RoomInterface
     protected $Length;
     protected $Volume;
 
+    public function building()
+    {
+        return $this->belongsTo(GenericBuilding::class);
+    }
+
     public function getType(){
         return (new \ReflectionClass(get_called_class()))->getShortName();
     }

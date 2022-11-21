@@ -53,6 +53,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($pass);
     }
 
+    public function chirps()
+    {
+        return $this->hasMany(Chirp::class);
+    }
+
     public function getRole()
     {
         return 'User';
