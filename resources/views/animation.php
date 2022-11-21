@@ -6,6 +6,8 @@ svg {
   transform: translate(-50%, -50%);
   background-color: #111;
   z-index: -1;
+  /* for the fixed nar */
+  margin-top: 36px;
 }
 .path {
   animation: draw 20s infinite;

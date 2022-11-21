@@ -25,9 +25,7 @@ use App\Http\Controllers\RoomManagementController;
 */
 
 
-Route::get('/', function () { return view('welcome'); });
-
-
+Route::get('/', function () { return redirect('home'); });
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::get('/login', [LoginController::class, 'index']);

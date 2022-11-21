@@ -2,12 +2,20 @@
 html{
     background-color: #111;
 }
+
 body, .container-transparent{
+    overflow-y: overlay;
+    scrollbar-gutter: stable;
     background-color: transparent !important;
     padding: 0;
     font-family: sans-serif;
-    color: green;
+    color: green !important;
 }
+
+.navbar, .modal-content{
+    background-color: #222 !important;
+}
+
 a{
     text-decoration: none;
     color: lightgreen;
@@ -16,14 +24,12 @@ a:hover{
     color: green;
 }
 
-p, h1, h2, h3, h4, h5, h6{
-    color: green;
+span, label, p, h1, h2, h3, h4, h5, h6{
+    color: green !important;
 }
-.container, .container-fluid {
+
+.container, .container-fluid, .navbar, .modal-content{
     background-color: #222;
-}
-.navbar, .modal-content{
-    background-color: #222 !important;
 }
 .nav-link {
     color: green !important;
@@ -37,24 +43,16 @@ p, h1, h2, h3, h4, h5, h6{
 .dropdown-toggle{
     color: darkgreen !important;
 }
-.navbar-card-brand{
-    color: green !important;
-}
 
 .form-control{
     background-color: #424242;
-    color: lightgreen;
     border-color: lightgreen;
 }
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: darkgreen;
-    opacity: .7; /* Firefox */
-}
-input::-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: darkgreen;
-}
-label{
-    color: darkgreen ;
+.form-control:focus {
+    background-color: #424242;
+    color: lightgreen !important;
+    border-color: lightgreen !important;
+
 }
 
 .room-container{

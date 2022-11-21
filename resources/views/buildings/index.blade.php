@@ -10,15 +10,15 @@
         @include('layotus.partials.messages')
         <div class="mb-3 row">
             <label for="title" class="col-4 col-form-label">Nombre</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+            <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name">
         </div>
         <div class="mb-3 row">
             <label for="title" class="col-4 col-form-label">Ubicación</label>
-            <input type="text" class="form-control" name="location" id="location" placeholder="Name">
+            <input type="text" class="form-control border-success" name="location" id="location" placeholder="Name">
         </div>
         <div class="mb-3 row">
             <label for="title" class="col-4 col-form-label">Clasificación</label>
-            <select  class="form-control" name="type" id="type">
+            <select  class="form-control border-success" name="type" id="type">
                 @foreach($types as $type)
                     <option value="{{$type->id}}">{{$type->name}}</option>
                 @endforeach

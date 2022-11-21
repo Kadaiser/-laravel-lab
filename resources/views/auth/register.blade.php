@@ -10,23 +10,23 @@
             @include('layotus.partials.messages')
             <div class="mb-3 row">
                 <label for="title" class="col-4 col-form-label">Email</label>
-                <input type="text" class="form-control" name="email" id="email" placeholder="email">
+                <input type="text" class="form-control border-success" name="email" id="email" placeholder="email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone.</small>
             </div>
 
             <div class="mb-3 row">
                 <label for="title" class="col-4 col-form-label">Username</label>
-                <input type="text" class="form-control" name="username" id="username" placeholder="username">
+                <input type="text" class="form-control border-success" name="username" id="username" placeholder="username">
             </div>
 
             <div class="mb-3 row">
                 <label for="title" class="col-4 col-form-label">Password</label>
-                <input type="password" class="form-control" name="password" id="password" placeholder="password">
+                <input type="password" class="form-control border-success" name="password" id="password" placeholder="password">
             </div>
 
             <div class="mb-3 row">
                 <label for="title" class="col-7 col-form-label">Confirm password</label>
-                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="password">
+                <input type="password" class="form-control border-success" name="password_confirmation" id="password_confirmation" placeholder="password">
             </div>
 
             <div class="mb-3 row">

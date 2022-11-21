@@ -10,7 +10,7 @@
                 @include('layotus.partials.messages')
                 <div class="mb-3 row">
                     <label for="title" class="col-4 col-form-label">Nombre</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="{{$building->name}}">
+                    <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name" value="{{$building->name}}">
                 </div>
                 <div class="mb-3 row">
                     <spam >Pisos: {{$building->getNumFloors()}}</span>
@@ -54,11 +54,11 @@
                         <input type="hidden" name="building" id="building" value={{$building->id}}>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Estancia</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+                            <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name">
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Clasificación</label>
-                            <select  class="form-control" name="type" id="type">
+                            <select  class="form-control border-success" name="type" id="type">
                                 @foreach($roomTypes as $type)
                                     <option value="{{$type->id}}">{{$type->name}}</option>
                                 @endforeach
@@ -66,20 +66,20 @@
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Alto</label>
-                            <input type="text" class="form-control" name="height" id="height" placeholder="height">
+                            <input type="text" class="form-control border-success" name="height" id="height" placeholder="height">
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Largo</label>
-                            <input type="text" class="form-control" name="width" id="width" placeholder="width">
+                            <input type="text" class="form-control border-success" name="width" id="width" placeholder="width">
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Ancho</label>
-                            <input type="text" class="form-control" name="length" id="length" placeholder="length">
+                            <input type="text" class="form-control border-success" name="length" id="length" placeholder="length">
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Volumen</label>
                             <div class="input-group p-0">
-                                <input type="text" class="form-control" name="volume" id="volume" placeholder="volume">
+                                <input type="text" class="form-control border-success" name="volume" id="volume" placeholder="volume">
                                 <button class="btn btn-outline-success" type="button" id="button-addon2">Calcular</button>
                                 <script>
                                     document.getElementById("button-addon2").addEventListener("click", function(){
@@ -94,7 +94,7 @@
                         </div>
                         <div class="mb-3 row">
                             <label for="title" class="col-4 col-form-label">Piso</label>
-                            <input type="text" class="form-control" name="floor" id="floor" placeholder="floor">
+                            <input type="text" class="form-control border-success" name="floor" id="floor" placeholder="floor">
                         </div>
                         
                     </div>   
