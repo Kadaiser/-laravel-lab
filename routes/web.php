@@ -51,8 +51,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 //Route::resource('tasks', TasksController::class);
 //Route::resource('categories', CategoriesController::class);
 Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store'])
-    ->middleware('auth');
+    ->only(['index', 'store','update','destroy'])
+    ->middleware('auth','verified');
 
 Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom'])
     ->middleware('auth');

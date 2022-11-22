@@ -28,7 +28,11 @@ span, label, p, h1, h2, h3, h4, h5, h6{
     color: green !important;
 }
 
-.container, .container-fluid, .navbar, .modal-content{
+.container,
+.container-fluid,
+.navbar,
+.modal-content,
+.chirp-container{
     background-color: #222;
 }
 .nav-link {
@@ -60,4 +64,38 @@ span, label, p, h1, h2, h3, h4, h5, h6{
     background-size: 22vw;
     background-position: 20vw -2.5vw;
     min-height: 200px;
+}
+
+
+.chrip-message{
+    line-break: anywhere;
+}
+
+.chirp-container{
+    position: relative;
+}
+.chirp-container:before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1vmin;
+    width: 0;
+    height: 0;
+    border: 25px solid transparent;
+    border-top-color: #222;
+    border-bottom: 0;
+    border-left: 0;
+    margin-bottom: -20px;
+}
+
+.chirp-container:after{
+    content: attr(role);
+    position: absolute;
+    bottom: 1.4vmin;
+    right: 3vmin;
+    width: 0;
+    height: 0;
+    font-size: small;
+    color: darkgreen !important;
+    transform: rotate(-40deg);
 }

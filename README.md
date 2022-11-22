@@ -15,6 +15,8 @@ php artisan serve
 
 Open a browser with the localhost:port open by artisan
 
+Default user is 'admin' and pass 'localdomus', enjoy!
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
