@@ -106,6 +106,9 @@
 
                 <div class="d-flex flex-column">
                     <div class="col-auto text-success"><small>{{ $chirp->created_at->format('d/m/y g:i a') }}</small></div>
+                    @unless ($chirp->created_at->eq($chirp->updated_at))
+                    <div class="col-auto text-success"><small class="text-sm text-gray-600">{{ __('Editado el '.$chirp->updated_at->format('d/m/y g:i a')) }}</small></div>
+                    @endunless
                 </div>
                 </form>
 
