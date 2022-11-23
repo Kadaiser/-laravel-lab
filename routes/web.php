@@ -33,7 +33,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/login', [LoginController::class, 'index'])
     ->middleware('guest');
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 
 
@@ -51,7 +51,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 //Route::resource('tasks', TasksController::class);
 //Route::resource('categories', CategoriesController::class);
 Route::resource('chirps', ChirpController::class)
-    ->only(['index', 'store','update','destroy'])
+    ->only(['index','store','edit','update','destroy'])
     ->middleware('auth','verified');
 
 Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom'])

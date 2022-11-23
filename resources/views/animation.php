@@ -4,7 +4,7 @@ svg {
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #111;
+  background-color: #010101;
   z-index: -1;
   /* for the fixed nar */
   margin-top: 36px;

@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <div class="container w-25 border p-4 mt-4 mb-4">
+    <div class="container bg-dark w-25 p-4 my-4 border border-success rounded">
         <div class="row justify-content-center align-items-center g-2">
             <form action="{{ route('buildings.update',['building' => $building->id]) }}"  method="POST">
                 @method('PATCH')
                 @csrf
                 @include('layotus.partials.messages')
                 <div class="mb-3 row">
-                    <label for="title" class="col-4 col-form-label">Nombre</label>
+                    <label for="title" class="col-4 col-form-label text-success">Nombre</label>
                     <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name" value="{{$building->name}}">
                 </div>
                 <div class="mb-3 row">
@@ -22,7 +22,6 @@
                     </div>
 
                     <div class="col">
-
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Añadir sala
@@ -30,10 +29,8 @@
                     </div>
                 </div>
             </form>
-                
         </div>
     </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -41,9 +38,9 @@
         @method('POST')
         @csrf
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Añadir Sala</h5>
+                    <h5 class="modal-title text-success" id="exampleModalLabel">Añadir Sala</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -53,11 +50,11 @@
                 <div id="add-room-form" class="row justify-content-center align-items-center g-2">
                         <input type="hidden" name="building" id="building" value={{$building->id}}>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Estancia</label>
+                            <label for="title" class="col-4 col-form-label text-success">Estancia</label>
                             <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name">
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Clasificación</label>
+                            <label for="title" class="col-4 col-form-label text-success">Clasificación</label>
                             <select  class="form-control border-success" name="type" id="type">
                                 @foreach($roomTypes as $type)
                                     <option value="{{$type->id}}">{{$type->name}}</option>
@@ -65,19 +62,19 @@
                             </select>
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Alto</label>
+                            <label for="title" class="col-4 col-form-label text-success">Alto</label>
                             <input type="text" class="form-control border-success" name="height" id="height" placeholder="height">
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Largo</label>
+                            <label for="title" class="col-4 col-form-label text-success">Largo</label>
                             <input type="text" class="form-control border-success" name="width" id="width" placeholder="width">
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Ancho</label>
+                            <label for="title" class="col-4 col-form-label text-success">Ancho</label>
                             <input type="text" class="form-control border-success" name="length" id="length" placeholder="length">
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Volumen</label>
+                            <label for="title" class="col-4 col-form-label text-success">Volumen</label>
                             <div class="input-group p-0">
                                 <input type="text" class="form-control border-success" name="volume" id="volume" placeholder="volume">
                                 <button class="btn btn-outline-success" type="button" id="button-addon2">Calcular</button>
@@ -93,7 +90,7 @@
                             </div>
                         </div>
                         <div class="mb-3 row">
-                            <label for="title" class="col-4 col-form-label">Piso</label>
+                            <label for="title" class="col-4 col-form-label text-success">Piso</label>
                             <input type="text" class="form-control border-success" name="floor" id="floor" placeholder="floor">
                         </div>
                         
@@ -111,8 +108,8 @@
     <!-- ROOMS CONTIANER -->
     @if ($building->Rooms->count() > 0)
         @foreach ($building->getFloors() as $nameFloor =>$floor)
-            <div class="container overflow-hidden border mb-3 p-4">
-                <h3>Piso {{$nameFloor}}</h3>
+            <div class="container bg-dark border mb-3 p-4">
+                <h3 class="text-success">Piso {{$nameFloor}}</h3>
                 <div class="row gy-5">
                     @foreach ($floor as $room)
                         <div class="col-6">
@@ -120,12 +117,12 @@
                             <div class="container p-3 border bg-transparent room-container" style="background-image: url('{{url('assets/images/svg/rooms/'.$room->getType().'.svg')}}')">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="/rooms/{{$room->id}}" class="">{{$room->name}}</a>
+                                        <a href="/rooms/{{$room->id}}" class="text-success">{{$room->name}}</a>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-success">
                                         {{$room->getType()}}
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-success">
                                         <form action="" method="POST">
                                             @method('DELETE')
                                             @csrf

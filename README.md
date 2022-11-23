@@ -2,16 +2,20 @@
 
 ## Dependencies
 
-php >= 8
-Any relational DDBB engine as Mysql witch it work with astisan migration
+-php >= 8
+
+-Any relational DDBB engine as Mysql witch it work with astisan migration
 
 ## How To launch
 
 Use artisan to create the tables an launch the project
 
-php artisan migrate
-php artisan db:seed
-php artisan serve
+####Inline code
+`$ php artisan migrate`
+
+`$ php artisan db:seed`
+
+`$ php artisan serve`
 
 Open a browser with the localhost:port open by artisan
 

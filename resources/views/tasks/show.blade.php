@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container w-25 border p-4 mt-4">
+    <div class="container form-container w-25 border p-4 mt-4">
         <form action="{{ route('tasks.update', ['task' => $task->id]) }}"  method="POST">
             @method('PATCH')
             @csrf

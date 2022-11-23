@@ -12,10 +12,10 @@
    <link rel="stylesheet" href="{{url('assets/css/mdb.dark.min.css')}}"/>
 </head>
 
-<body>
+<body class="bg-transparent">
     @include('animation')
     @include('layotus.partials.navbar')
-    <main class="container container-transparent">
+    <main>
         @yield('content')
     </main>
 

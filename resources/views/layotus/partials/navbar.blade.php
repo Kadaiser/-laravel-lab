@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-custom">
+<nav class="navbar navbar-expand-lg sticky-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/home">LocalDomus</a>
+        <a class="navbar-brand text-success" href="/home">LocalDomus</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,27 +15,30 @@
                 </li>
                 -->
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{ route('buildings.index')}}">Edificios</a>
+                    <a class="nav-link text-success" aria-current="page" href="{{route('chirps.index')}}">MicroBlog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-link text-success" aria-current="page" href="{{route('buildings.index')}}">Edificios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-success" href="/dashboard">Dashboard</a>
                 </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav">
                 @auth
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="nav-item dropdown ">
+                    <a class="nav-link dropdown-toggle text-success" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <strong>{{auth()->user()->username}}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">{{auth()->user()->getRole()}}</a></li>
+                        <li><a class="dropdown-item text-success" href="#">{{auth()->user()->getRole()}}</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                        <li><a class="dropdown-item text-success" href="#">Profile</a></li>
+                        <li><a class="dropdown-item text-success" href="#">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/logout">Close session</a></li>
+                        <li><a class="dropdown-item text-success" href="/logout">Close session</a></li>
                     </ul>
                 </li>
                 @endauth
@@ -52,7 +55,6 @@
                 </li>
                 @endguest  
             </ul>
-
 
         </div>
     </div>

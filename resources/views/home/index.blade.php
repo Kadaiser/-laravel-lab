@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container mt-4 container-transparent">
+    <div class="container form-container mt-4 container-transparent">
 
         <!-- Jumbotron -->
         <div class="p-5 text-center container-transparent">

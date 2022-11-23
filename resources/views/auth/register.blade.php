@@ -1,7 +1,7 @@
 @extends('layotus.app-master')
 @section('content')
 
-<div class="container w-25 border p-4 mt-4">
+<div class="container  bg-dark w-25 border border-success p-4 mt-4">
     <div class="row justify-content-center align-items-center g-2">
 
         

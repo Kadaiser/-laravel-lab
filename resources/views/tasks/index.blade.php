@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container w-25 border p-4 mt-4">
+    <div class="container form-container w-25 border p-4 mt-4">
         <div class="row justify-content-center align-items-center g-2">
             <form action="{{ route('tasks.store') }}"  method="POST">
                 @csrf
