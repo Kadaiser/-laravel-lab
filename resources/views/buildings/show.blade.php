@@ -13,7 +13,7 @@
                     <input type="text" class="form-control border-success" name="name" id="name" placeholder="Name" value="{{$building->name}}">
                 </div>
                 <div class="mb-3 row">
-                    <spam >Pisos: {{$building->getNumFloors()}}</span>
+                    <spam class="text-success">Pisos: {{$building->getNumFloors()}}</span>
                 </div>
                 
                 <div class="mb-3 row justify-content-center align-items-center g-4">
@@ -23,8 +23,14 @@
 
                     <div class="col">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Añadir sala
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRoomModla">
+                            Sala
+                        </button>
+                    </div>
+                    <div class="col">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBuildingModal">
+                            Demoler
                         </button>
                     </div>
                 </div>
@@ -33,14 +39,14 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addRoomModla" tabindex="-1" aria-labelledby="addRoomModlaLabel" aria-hidden="true">
     <form action="/addRoom/{{$building->id}}"  method="POST">
         @method('POST')
         @csrf
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title text-success" id="exampleModalLabel">Añadir Sala</h5>
+                    <h5 class="modal-title text-success" id="addRoomModlaLabel">Añadir Sala</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -105,6 +111,33 @@
     </form>
     </div>
 
+
+        <!-- Modal  DELETE-->
+        <div class="modal fade" id="deleteBuildingModal" tabindex="-1" aria-labelledby="deleteBuildingModalLabel" aria-hidden="true">
+    <form action="{{route('buildings.destroy', $building)}}"  method="POST">
+        @method('DELETE')
+        @csrf
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h5 class="modal-title text-success" id="deleteBuildingModalLabel">Añadir Sala</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+            <div class="modal-body">
+                <p class="text-success">Al eliminar un edificio todas las estancian incluidas y los enlaces con elementos IoT en sus interiores seran desvinculados. Esta acción es irreversible</p> 
+                <p class="text-success">¿Confirmas la eliminación de este edificio?</p>        
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    </form>
+    </div>
+
     <!-- ROOMS CONTIANER -->
     @if ($building->Rooms->count() > 0)
         @foreach ($building->getFloors() as $nameFloor =>$floor)
@@ -123,7 +156,7 @@
                                         {{$room->getType()}}
                                     </div>
                                     <div class="col text-success">
-                                        <form action="" method="POST">
+                                        <form action="{{route('rooms.destroy',$room)}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button name="" id="" class="btn btn-danger btn-sm">Borrar</button>
@@ -138,8 +171,8 @@
             </div>
         @endforeach
     @else
-        <div class="container border mb-3 p-4">
-            <p>Este edificio no tiene instancias</p>
+        <div class="container border mb-3 p-4 bg-dark">
+            <p class="text-success" >Este edificio no tiene instancias</p>
         </div>
     @endif
 

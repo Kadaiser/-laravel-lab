@@ -3,6 +3,6 @@
 
 @section('AddCard')
     <div class="row justify-content-center">
-        <div class="col-4 d-flex justify-content-center text-center">Añadir Carta</div>
+        <div class="col-4 d-flex text-success justify-content-center text-center">Añadir Carta</div>
     </div>
 @endsection

@@ -24,12 +24,13 @@ textarea {
     border-color: lightgreen;
 }
 
-
-
 .form-control:focus {
     color: lightgreen !important;
     border-color: lightgreen !important;
 }
+
+
+/***/
 
 .room-container{
     background-repeat: no-repeat;
@@ -37,6 +38,9 @@ textarea {
     background-position: 20vw -2.5vw;
     min-height: 200px;
 }
+
+
+/***/
 
 .chirp-container{
     position: relative;

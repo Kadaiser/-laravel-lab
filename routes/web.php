@@ -60,5 +60,5 @@ Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoo
 Route::resource('buildings', BuildingManagementController::class)
     ->middleware('auth');
     
-Route::get('/rooms/{room}', [RoomManagementController::class, 'show'])
+Route::resource('rooms', RoomManagementController::class)
     ->middleware('auth');

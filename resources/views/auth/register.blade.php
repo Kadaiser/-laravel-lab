@@ -9,23 +9,23 @@
             @csrf
             @include('layotus.partials.messages')
             <div class="mb-3 row">
-                <label for="title" class="col-4 col-form-label">Email</label>
+                <label for="title" class="col-4 col-form-label text-success">Email</label>
                 <input type="text" class="form-control border-success" name="email" id="email" placeholder="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone.</small>
+                <small id="emailHelp" class="form-text text-success">We'll never share your email with anyone.</small>
             </div>
 
             <div class="mb-3 row">
-                <label for="title" class="col-4 col-form-label">Username</label>
+                <label for="title" class="col-4 col-form-label text-success">Username</label>
                 <input type="text" class="form-control border-success" name="username" id="username" placeholder="username">
             </div>
 
             <div class="mb-3 row">
-                <label for="title" class="col-4 col-form-label">Password</label>
+                <label for="title" class="col-4 col-form-label text-success">Password</label>
                 <input type="password" class="form-control border-success" name="password" id="password" placeholder="password">
             </div>
 
             <div class="mb-3 row">
-                <label for="title" class="col-7 col-form-label">Confirm password</label>
+                <label for="title" class="col-7 col-form-label text-success">Confirm password</label>
                 <input type="password" class="form-control border-success" name="password_confirmation" id="password_confirmation" placeholder="password">
             </div>
 

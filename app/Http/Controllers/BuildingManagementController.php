@@ -80,6 +80,22 @@ class BuildingManagementController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($building)
+    {
+        $building = GenericBuilding::find($building);
+        $building->Rooms()->each(function($room){
+            $room->delete();
+        });
+        $building->delete();
+        return redirect()->route('buildings.index')->with('success', 'Edificio eliminado');
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

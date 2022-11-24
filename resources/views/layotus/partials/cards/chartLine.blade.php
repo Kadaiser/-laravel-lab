@@ -6,10 +6,10 @@
 @section('tempHum')
 
     <div class="row justify-content-center">
-        <div class="col-3 d-flex justify-content-center text-center">Temperatura (C):</div>
-        <div class="col-3 d-flex justify-content-center text-center" id="temp"></div>
-        <div class="col-3 d-flex justify-content-center text-center">Humedad (%):</div>
-        <div class="col-3 d-flex justify-content-center text-center" id="hum"></div>
+        <div class="col-3 d-flex justify-content-center text-center text-success">Temperatura (C):</div>
+        <div class="col-3 d-flex justify-content-center text-center text-success" id="temp"></div>
+        <div class="col-3 d-flex justify-content-center text-center text-success">Humedad (%):</div>
+        <div class="col-3 d-flex justify-content-center text-center text-success" id="hum"></div>
     </div>
     <div class="row">
         <canvas  id="chart_temphum"></div>

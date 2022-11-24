@@ -45,12 +45,12 @@
             
                 @guest
                 <li class="nav-item dropdown dropdown-menu-end">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle text-success" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <strong>Anonymus</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="/login">Sign In</a></li>
-                        <li><a class="dropdown-item" href="/register">Sign Up</a></li>
+                        <li><a class="dropdown-item text-success" href="/login">Sign In</a></li>
+                        <li><a class="dropdown-item text-success" href="/register">Sign Up</a></li>
                     </ul>
                 </li>
                 @endguest  
