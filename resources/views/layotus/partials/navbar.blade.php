@@ -20,6 +20,12 @@
                 <li class="nav-item">
                     <a class="nav-link text-success" aria-current="page" href="{{route('buildings.index')}}">Edificios</a>
                 </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link text-success" aria-current="page" href="">Flota</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link text-success" aria-current="page" href="">Personal</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link text-success" href="/dashboard">Dashboard</a>
                 </li>

@@ -23,5 +23,12 @@ class DatabaseSeeder extends Seeder
              'type' => 'App\\Models\\AdminUser',
              'password' => 'localdomus',
          ]);
+
+         \App\Models\Sensors\GenericSensor::factory()->create([
+            'name' => 'DHT11',
+            'ws_host' => '192.168.1.20:8766',
+            'model' => 'DHT11',
+            'type' => 'App\\Models\\Sensors\\GenericSensor',
+        ]);
     }
 }
