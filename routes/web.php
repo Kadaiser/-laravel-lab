@@ -64,6 +64,6 @@ Route::resource('buildings/{building}/rooms', RoomManagementController::class)
     ->only(['show','store','destroy'])
     ->middleware('auth');
 
-Route::post('buildings/{building}/rooms/addSensor', [BuildingManagementController::class, 'addSensor'])
+Route::post('buildings/{building}/rooms/{room}/addSensor', [RoomManagementController::class, 'addSensor'])
     ->middleware('auth')->name('buildings.addSensor');
 

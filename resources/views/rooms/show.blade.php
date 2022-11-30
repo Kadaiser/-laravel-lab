@@ -27,10 +27,10 @@
             <div class="text-success col-2">
                 <a name="" id="" class="btn btn-primary" href="{{ route('buildings.show', $room->building_id) }}"  role="button">Volver</a>
             </div>
-            <div class="col">
+            <div class="col-3">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addSensor">
-                    Sala
+                    Sensor Nuevo
                 </button>
             </div>
         </div>
@@ -39,7 +39,7 @@
 
         <!-- Modal -->
         <div class="modal fade" id="addSensor" tabindex="-1" aria-labelledby="addSensorLabel" aria-hidden="true">
-    <form action="{{ route('buildings.addSensor', $room) }}"  method="POST">
+    <form action="{{ route('buildings.addSensor', ['building' => $room->building_id, 'room' => $room]) }}"  method="POST">
         @method('POST')
         @csrf
         <div class="modal-dialog">
@@ -81,8 +81,8 @@
 
 
         <!-- SENSORS CONTIANER -->
-        @if ($room->Sensors->count() > 0)
-        @foreach ($room->Sensors as $sensor)
+        @if ($room->sensors->count() > 0)
+        @foreach ($room->sensors as $sensor)
             <div class="container bg-dark border mb-3 p-4">
                 <div class="row gy-5">
                         <div class="col-6">
@@ -90,7 +90,7 @@
                             <div class="container p-3 border bg-transparent room-container">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="{{ route('rooms.show', $room) }}" class="text-success">{{$sensor->name}}</a>
+                                        <a href="" class="text-success">{{$sensor->name}}</a>
                                     </div>
                                     <div class="col text-success">
                                         {{$sensor->getType()}}

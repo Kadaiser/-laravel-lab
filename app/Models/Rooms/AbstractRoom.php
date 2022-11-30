@@ -31,7 +31,7 @@ abstract class AbstractRoom extends Model implements RoomInterface
     protected $Volume;
 
     /**
-     *
+     * relate 1:N
      * @var array<int, string>
      */
     public function sensors()

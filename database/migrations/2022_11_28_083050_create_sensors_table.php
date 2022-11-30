@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('ws_host');
             $table->string('model');
-            $table->string("type")->default('App\\\\Models\\\\Sensor\\\\GenericSensor');
+            $table->string("type")->default('App\\\\Models\\\\Sensors\\\\GenericSensor');
             $table->nullableMorphs("sensorable");
             $table->timestamps();
+
         });
     }
 

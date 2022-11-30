@@ -14,7 +14,7 @@ class RoomManagementController extends Controller
      * @param  int  $building
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $room)
+    public function show(Request $request, $building, $room)
     {
         $room = GenericRoom::find($room);
         return view('rooms.show', ['room' => $room]);
@@ -57,6 +57,34 @@ class RoomManagementController extends Controller
         
 
         return redirect()->route('buildings.show', [$building])->with('success', 'Nueva sala añadida');
+    }
+
+    public function addSensor(Request $request, GenericBuilding $building, GenericRoom $room)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:rooms|max:255',
+            'model' => 'required|max:50',
+            'ws_host' => 'required||max:255',
+        ]);
+
+        try{
+            /*
+            //TODO check if the sensor is valid for the sensor or allows by policies
+            $class = 'App\Models\Rooms\\'.$request->type;
+            if(!class_exists($class))
+            {
+                throw new \Exception('Class not found');
+            }
+            */
+            $room->sensors()->create($validated);
+
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return redirect()->route('rooms.show', ['building' => $building, 'room' => $room])->withErrors($e->getMessage());
+        }
+
+
+        return redirect()->route('rooms.show', ['building' => $building, 'room' => $room])->with('success', 'Nuevo Sensor añadido');
     }
 
 

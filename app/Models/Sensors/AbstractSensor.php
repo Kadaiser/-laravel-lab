@@ -14,7 +14,7 @@ abstract class AbstractSensor extends Model implements SensorInterface
 
     public function sensorable()
     {
-        return $this->morphToMany();
+        return $this->morphTo();
     }
 
     public function getType(){

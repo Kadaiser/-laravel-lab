@@ -113,34 +113,4 @@ class BuildingManagementController extends Controller
     }
 
 
-    public function addSensor(Request $request, $building)
-    {
-        dd($building);
-        $request->validate([
-            'name' => 'required|unique:rooms|max:255',
-            'ws_host' => 'required||max:255',
-        ]);
-
-        try{
-            $class = 'App\Models\Rooms\\'.$request->type;
-            if(!class_exists($class))
-            {
-                throw new \Exception('Class not found');
-            }
-            
-            $room = new $class;
-            $room->name = $request->name;
-            $room->ws_host = $request->ws_host;
-            $room->model = $request->model;
-            $room->save();
-
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-            return redirect()->route('rooms.show', [$request->building])->withErrors($e->getMessage());
-        }
-
-
-        return redirect()->route('rooms.show', [$request->building])->with('success', 'Nuevo Sensor añadido');
-    }
-
 }
