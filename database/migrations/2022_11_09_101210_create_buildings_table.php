@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("name")->unique();
             $table->string("location")->nullable();
             $table->string("type")->default('App\\\\Models\\\\Buildings\\\\GenericBuilding');
-            $table->boolean("disabled");
+            $table->boolean("disabled")->default(false);
             $table->timestamps();
         });
     }

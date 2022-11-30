@@ -1,66 +1,38 @@
 <?php
 
-namespace App\Models\Rooms;
+namespace App\Models\Sensors;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Interfaces\RoomInterface;
+use App\Interfaces\SensorInterface;
 
-abstract class AbstractRoom extends Model implements RoomInterface
+abstract class AbstractSensor extends Model implements SensorInterface
 {
     use HasFactory;
 
-    protected $table = 'rooms';
+    protected $table = 'sensors';
 
-    protected $Height;
-    protected $Width;
-    protected $Length;
-    protected $Volume;
-
-    /**
-     *
-     * @var array<int, string>
-     */
-    public function sensors()
+    public function sensorable()
     {
-        return $this->morphMany('App\Models\Sensors\GenericSensor','sensorable');
-    }
-
-    public function building()
-    {
-        return $this->belongsTo(GenericBuilding::class);
+        return $this->morphToMany();
     }
 
     public function getType(){
         return (new \ReflectionClass(get_called_class()))->getShortName();
     }
 
-    public function getHeight()
-    {
-        return $this->height;
-    }
-    public function getWidth()
-    {
-        return $this->width;
-    }
-    public function getLength()
-    {
-        return $this->length;
-    }
-    public function getVolume()
-    {
-        return $this->volume;
-    }
-
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    /*
     protected $fillable = [
         'type',
     ];
+    */
+
+    protected $guarded = [];
 
     /**
      * Create a new instance of the given model.

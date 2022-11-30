@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('ws_host');
             $table->string('model');
             $table->string("type")->default('App\\\\Models\\\\Sensor\\\\GenericSensor');
+            $table->nullableMorphs("sensorable");
             $table->timestamps();
         });
     }

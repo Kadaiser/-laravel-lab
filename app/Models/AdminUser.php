@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class AdminUser extends User
+final class AdminUser extends User
 {
     use Child;
 

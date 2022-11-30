@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string("floor");
             $table->string("location")->nullable();
             $table->string("type")->default('App\\\\Models\\\\Rooms\\\\GenericRoom');
-            $table->boolean("disabled");
+            $table->boolean("disabled")->default(false);;
             $table->timestamps();
         });
     }

@@ -2,23 +2,12 @@
 
 namespace App\Models\Sensors;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Sensors\AbstractSensor;
 
-class GenericSensor extends Model
+class GenericSensor extends AbstractSensor
 {
-    use HasFactory;
-
-    protected $table = 'sensors';
-
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'type',
-    ];
+    public function getType(){
+        return 'Generic';
+    }
 
 }

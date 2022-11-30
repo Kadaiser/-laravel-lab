@@ -28,4 +28,35 @@
             </div>
         </div>
     </div>
+
+
+
+        <!-- SENSORS CONTIANER -->
+        @if ($room->Sensors->count() > 0)
+        @foreach ($room->Sensors as $sensor)
+            <div class="container bg-dark border mb-3 p-4">
+                <div class="row gy-5">
+                        <div class="col-6">
+                            
+                            <div class="container p-3 border bg-transparent room-container">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="/rooms/{{$room->id}}" class="text-success">{{$sensor->name}}</a>
+                                    </div>
+                                    <div class="col text-success">
+                                        {{$sensor->getType()}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <div class="container border mb-3 p-4 bg-dark">
+            <p class="text-success" >Este edificio no tiene sensores</p>
+        </div>
+    @endif
+
 @endsection
