@@ -102,28 +102,23 @@ class BuildingManagementController extends Controller
      * @param  int  $building
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $building)
+    public function update(Request $request, GenericBuilding $building)
     {
-        $class = 'App\Models\Buildings\\'.$request->type;
-        $instance = new $class;
-        $building = $instance::find($building);
-        $building->name = $request->name;
-        $building->save();
+        $validated = $request->validate([
+            'name' => 'required|string|unique:buildings|max:255',
+        ]);
+        $building->update($validated);
 
-        return redirect()->route('categories.index')->with('success', 'Categoria modificada');
+        return redirect()->route('buildings.show', $building->id)->with('success', 'Edificio modificado');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function addRoom(Request $request)
+
+    public function addSensor(Request $request, $building)
     {
+        dd($building);
         $request->validate([
             'name' => 'required|unique:rooms|max:255',
-            'building' => 'required|exists:buildings,id',
+            'ws_host' => 'required||max:255',
         ]);
 
         try{
@@ -135,23 +130,17 @@ class BuildingManagementController extends Controller
             
             $room = new $class;
             $room->name = $request->name;
-            $room->height = $request->height;
-            $room->width = $request->width;
-            $room->length = $request->length;
-            $room->volume = $request->volume;
-            $room->floor = $request->floor;
-            $room->type = $class;
-            $room->disabled = false;
-            $room->building_id = $request->building;
+            $room->ws_host = $request->ws_host;
+            $room->model = $request->model;
             $room->save();
 
         } catch (\Exception $e) {
             dd($e->getMessage());
-            return redirect()->route('buildings.show', [$request->building])->withErrors($e->getMessage());
+            return redirect()->route('rooms.show', [$request->building])->withErrors($e->getMessage());
         }
 
 
-        return redirect()->route('buildings.show', [$request->building])->with('success', 'Nueva sala añadida');
+        return redirect()->route('rooms.show', [$request->building])->with('success', 'Nuevo Sensor añadido');
     }
 
 }

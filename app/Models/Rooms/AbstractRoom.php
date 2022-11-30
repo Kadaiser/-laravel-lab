@@ -12,6 +12,19 @@ abstract class AbstractRoom extends Model implements RoomInterface
 
     protected $table = 'rooms';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    /*
+    protected $fillable = [
+        'type',
+    ];
+    */
+
+    protected $guarded = [];
+
     protected $Height;
     protected $Width;
     protected $Length;
@@ -52,15 +65,6 @@ abstract class AbstractRoom extends Model implements RoomInterface
         return $this->volume;
     }
 
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'type',
-    ];
 
     /**
      * Create a new instance of the given model.

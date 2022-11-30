@@ -4,7 +4,7 @@
 
     <div class="container bg-dark w-25 p-4 my-4 border border-success rounded">
         <div class="row justify-content-center align-items-center g-2">
-            <form action="{{ route('buildings.update',['building' => $building->id]) }}"  method="POST">
+            <form action="{{ route('buildings.update', $building) }}"  method="POST">
                 @method('PATCH')
                 @csrf
                 @include('layotus.partials.messages')
@@ -23,7 +23,7 @@
 
                     <div class="col">
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRoomModla">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addRoomModal">
                             Sala
                         </button>
                     </div>
@@ -39,14 +39,14 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="addRoomModla" tabindex="-1" aria-labelledby="addRoomModlaLabel" aria-hidden="true">
-    <form action="/addRoom/{{$building->id}}"  method="POST">
+    <div class="modal fade" id="addRoomModal" tabindex="-1" aria-labelledby="addRoomModalLabel" aria-hidden="true">
+    <form action="{{ route('rooms.store', $building) }}"  method="POST">
         @method('POST')
         @csrf
         <div class="modal-dialog">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
-                    <h5 class="modal-title text-success" id="addRoomModlaLabel">Añadir Sala</h5>
+                    <h5 class="modal-title text-success" id="addRoomModalLabel">Añadir Sala</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
@@ -150,13 +150,13 @@
                             <div class="container p-3 border bg-transparent room-container" style="background-image: url('{{url('assets/images/svg/rooms/'.$room->getType().'.svg')}}')">
                                 <div class="row">
                                     <div class="col">
-                                        <a href="/rooms/{{$room->id}}" class="text-success">{{$room->name}}</a>
+                                        <a href="{{route('rooms.show', ['building' => $building, 'room' => $room])}}" class="text-success">{{$room->name}}</a>
                                     </div>
                                     <div class="col text-success">
                                         {{$room->getType()}}
                                     </div>
                                     <div class="col text-success">
-                                        <form action="{{route('rooms.destroy',$room)}}" method="POST">
+                                        <form action="{{route('rooms.destroy',['building' => $building, 'room' =>  $room])}}" method="POST">
                                             @method('DELETE')
                                             @csrf
                                             <button name="" id="" class="btn btn-danger btn-sm">Borrar</button>

@@ -38,7 +38,7 @@
     <div class="row justify-content-center align-items-center g-2">
         <div class="col-md-9 d-flex align-items-center">
             <span class='color-container p-2'> </span> &nbsp
-            <a class="d-flex align-items-center gap-2 text-info" href="{{ route('buildings.show', ['building' => $building->id]) }}">
+            <a class="d-flex align-items-center gap-2 text-info" href="{{ route('buildings.show', $building) }}">
                 {{$building->name}}
             </a>
         </div>

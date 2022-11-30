@@ -54,11 +54,16 @@ Route::resource('chirps', ChirpController::class)
     ->only(['index','store','edit','update','destroy'])
     ->middleware('auth','verified');
 
-Route::post('/addRoom/{building}', [BuildingManagementController::class, 'addRoom'])
+
+    
+Route::resource('buildings', BuildingManagementController::class)
+    ->only(['index','store','edit','update','show','destroy'])
     ->middleware('auth');
 
-Route::resource('buildings', BuildingManagementController::class)
+Route::resource('buildings/{building}/rooms', RoomManagementController::class)
+    ->only(['show','store','destroy'])
     ->middleware('auth');
-    
-Route::resource('rooms', RoomManagementController::class)
-    ->middleware('auth');
+
+Route::post('buildings/{building}/rooms/addSensor', [BuildingManagementController::class, 'addSensor'])
+    ->middleware('auth')->name('buildings.addSensor');
+
