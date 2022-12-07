@@ -6,6 +6,20 @@
 
 -Any relational DDBB engine as Mysql witch it work with astisan migration
 
+-Composer
+
+-npm
+## How To install
+`composer install`
+`cp .env.example .env`
+`php artisan key:generate`
+
+now add the needed info for the ddbb conection
+
+may some componets are missing, you can always do
+`composer update -W`
+
+
 ## How To launch
 
 Use artisan to create the tables an launch the project
